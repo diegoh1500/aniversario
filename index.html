@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Feliz Aniversario ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  overflow-x: hidden;
+  color: white;
+  text-align: center;
+}
+
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: rgba(255,255,255,0.15);
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
+}
+
+h1 {
+  font-size: 2.4em;
+}
+
+p {
+  font-size: 1.1em;
+}
+
+img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+.timer {
+  background: rgba(0,0,0,0.3);
+  padding: 15px;
+  border-radius: 15px;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+a.button {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #ff1e56;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  margin-top: 20px;
+  font-size: 1em;
+}
+
+/* Corazones flotando */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Feliz Aniversario, Amor ❤️</h1>
+
+  <p>
+    Gracias por estos dos años.  
+    Desde que llegaste, todo tuvo más sentido.
+  </p>
+
+  <img src="foto.jpeg" alt="Nosotros">
+
+  <div class="timer" id="contador"></div>
+
+  <p style="margin-top:20px;">
+    🎶 Esta canción siempre me recuerda a ti
+  </p>
+
+  <!-- 🔴 REEMPLAZA EL LINK DE SPOTIFY AQUÍ 🔴 -->
+  <iframe
+    style="border-radius:12px"
+    src="https://open.spotify.com/track/6rj7MZvm0Itd9ES9tdSqlK?si=toQGg7kSRv6lWYm06Tdbhg"
+    width="100%"
+    height="152"
+    frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+  </iframe>
+
+  <a href="carta.html" class="button">
+    📜 Leer mi carta para ti
+  </a>
+</div>
+
+<script>
+/* CONTADOR */
+const inicio = new Date("2024-02-10T00:00:00");
+
+function actualizarTiempo() {
+  const ahora = new Date();
+  const d = ahora - inicio;
+
+  const dias = Math.floor(d / (1000*60*60*24));
+  const horas = Math.floor((d / (1000*60*60)) % 24);
+  const minutos = Math.floor((d / (1000*60)) % 60);
+  const segundos = Math.floor((d / 1000) % 60);
+
+  document.getElementById("contador").innerHTML =
+    `❤️ Llevamos juntos<br>
+     ${dias} días<br>
+     ${horas}h ${minutos}m ${segundos}s`;
+}
+
+setInterval(actualizarTiempo, 1000);
+actualizarTiempo();
+
+/* CORAZONES */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 6000);
+}, 400);
+</script>
+
+</body>
+</html>
